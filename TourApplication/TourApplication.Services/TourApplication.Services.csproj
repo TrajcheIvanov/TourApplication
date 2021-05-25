@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TourApplication.Common\TourApplication.Common.csproj" />
+    <ProjectReference Include="..\TourApplication.Repositories\TourApplication.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
