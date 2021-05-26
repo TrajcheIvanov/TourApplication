@@ -31,7 +31,8 @@ namespace TourApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TourApplicationDbContext>(
-                    x => x.UseSqlServer(Configuration.GetConnectionString("TourApplication"))
+                    x => 
+                    x.UseSqlServer(Configuration.GetConnectionString("TourApplication"))
                 );
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
