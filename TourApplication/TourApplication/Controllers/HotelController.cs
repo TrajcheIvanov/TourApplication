@@ -17,6 +17,16 @@ namespace TourApplication.Controllers
         {
             _hotelServices = hotelServices;
         }
+
+        public IActionResult Overview(string filter)
+        {
+           
+            var hotels = _hotelServices.GetWithFilters(filter);
+
+            var hotelsToView = hotels.Select(x => x.ToOverviewModel()).ToList();
+
+            return View(hotelsToView);
+        }
         public IActionResult ManageOverview(string errorMessage, string successMessage)
         {
             ViewBag.ErrorMessage = errorMessage;

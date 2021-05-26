@@ -46,7 +46,7 @@ namespace TourApplication.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                        return RedirectToAction("ManageOverview", "Hotel");
+                        return RedirectToAction("Overview", "Hotel");
                    
                 }
                 ModelState.AddModelError("", "Invalid login attepmt");

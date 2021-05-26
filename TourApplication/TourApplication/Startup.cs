@@ -74,7 +74,7 @@ namespace TourApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Hotel}/{action=ManageOverview}/{id?}");
+                    pattern: "{controller=Hotel}/{action=Overview}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

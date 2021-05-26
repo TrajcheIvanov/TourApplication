@@ -30,16 +30,17 @@ namespace TourApplication.Repositories
 
         public List<Hotel> GetWithFilters(string filter)
         {
-            var query = _context.Hotels;
+           
 
             if (filter != null)
             {
-                query.Where(x => x.Name.Contains(filter) || x.Destination.Contains(filter));
+                return _context.Hotels.Where(x => x.Name.Contains(filter) || x.Destination.Contains(filter)).ToList();
+            }
+            else
+            {
+                return _context.Hotels.ToList();
             }
 
-            var hotels = query.ToList();
-
-            return hotels;
         }
     }
 }
