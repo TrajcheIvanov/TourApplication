@@ -44,9 +44,11 @@ namespace TourApplication
 
             //Register Services
             services.AddTransient<IHotelServices, HotelServices>();
+            services.AddTransient<IBookingServices, BookingServices>();
 
             //Register Repositories
             services.AddTransient<IHotelRepository, HotelRepository>();
+            services.AddTransient<IBookingRepository, BookingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

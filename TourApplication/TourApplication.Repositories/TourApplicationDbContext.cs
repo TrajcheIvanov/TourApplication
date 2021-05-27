@@ -14,5 +14,7 @@ namespace TourApplication.Repositories
         }
 
         public DbSet<Hotel> Hotels { get; set; }
+
+        public DbSet<Booking> Bookings { get; set; }
     }
 }

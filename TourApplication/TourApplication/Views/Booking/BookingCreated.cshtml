@@ -1,0 +1,44 @@
+﻿@model TourApplication.ViewModels.ConfirmBookingViewModel
+
+@{
+    ViewData["Title"] = "BookingCreated";
+}
+
+<h1>BookingCreated</h1>
+
+<div>
+    <h4>Thank you for booking, please find below booking infomrations, the same is is sent by E-mail</h4>
+    <h4>You can check the booking status on the check booking status page </h4>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookingCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookingCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Overview" asp-controller="Hotel">Back to Overview</a>
+    <a asp-action="CheckBookingStatus" asp-controller="Booking">Back to Overview</a>
+</div>

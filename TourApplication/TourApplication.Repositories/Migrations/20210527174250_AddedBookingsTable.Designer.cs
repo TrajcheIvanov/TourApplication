@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TourApplication.Repositories;
 
 namespace TourApplication.Repositories.Migrations
 {
     [DbContext(typeof(TourApplicationDbContext))]
-    partial class TourApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210527174250_AddedBookingsTable")]
+    partial class AddedBookingsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

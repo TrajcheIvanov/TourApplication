@@ -1,0 +1,76 @@
+﻿@model TourApplication.ViewModels.BookingViewModel
+
+@{
+    ViewData["Title"] = "BookHotel";
+}
+
+<h1>BookHotel</h1>
+
+<h4>BookingViewModel</h4>
+<hr />
+
+<div class="card col-md-3 p-2 m-2" style="width: 18rem;">
+    <img src="@Model.Hotel.ImageUrl" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title"@Model.Hotel.Name</h5>
+        <p class="card-text">@Model.Hotel.Destination </p>
+        <p class="card-text"> Price: @Model.Hotel.Price </p>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BookHotel" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="HotelId" class="form-control" hidden />
+                <span asp-validation-for="HotelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromDate" class="control-label"></label>
+                <input asp-for="FromDate" class="form-control" />
+                <span asp-validation-for="FromDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToDate" class="control-label"></label>
+                <input asp-for="ToDate" class="form-control" />
+                <span asp-validation-for="ToDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfPeople" class="control-label"></label>
+                <input asp-for="NumberOfPeople" class="form-control" />
+                <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfRooms" class="control-label"></label>
+                <input asp-for="NumberOfRooms" class="form-control" />
+                <span asp-validation-for="NumberOfRooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

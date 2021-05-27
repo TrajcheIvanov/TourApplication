@@ -19,7 +19,6 @@ namespace TourApplication.Mappings
                 Price = hotel.Price,
                 Description = hotel.Description,
                 Amenities = hotel.Amenities
-
             };
 
         }
@@ -35,9 +34,22 @@ namespace TourApplication.Mappings
                 Price = hotel.Price,
                 Description = hotel.Description,
                 Amenities = hotel.Amenities
-
             };
+        }
 
+        public static Booking ToModel(this BookingViewModel hotel)
+        {
+            return new Booking()
+            {
+                HotelId = hotel.HotelId,
+                FromDate = hotel.FromDate,
+                ToDate = hotel.ToDate,
+                NumberOfPeople = hotel.NumberOfPeople,
+                NumberOfRooms = hotel.NumberOfRooms,
+                Name = hotel.Name,
+                Surname = hotel.Surname,
+                Email = hotel.Email
+            };
         }
     }
 }

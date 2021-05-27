@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -31,12 +32,14 @@ namespace TourApplication.Controllers
             _roleManager = roleManager;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -55,6 +58,7 @@ namespace TourApplication.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register()
         {
             if (!_roleManager.RoleExistsAsync(Helper.Admin).GetAwaiter().GetResult())
@@ -66,7 +70,7 @@ namespace TourApplication.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -89,7 +93,7 @@ namespace TourApplication.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, model.RoleName);
                    
-                    return RedirectToAction("ManageOverview", "Employee");
+                    return RedirectToAction("Overview", "Hotel");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -99,7 +103,7 @@ namespace TourApplication.Controllers
             return View(model);
         }
 
-   
+        [Authorize]
         public async Task<IActionResult> LogOff()
         {
             var user = User;

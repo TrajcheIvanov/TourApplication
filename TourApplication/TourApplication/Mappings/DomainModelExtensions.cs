@@ -47,5 +47,30 @@ namespace TourApplication.Mappings
                 Amenities = hotel.Amenities
             };
         }
+
+        public static UserViewModel ToViewModel(this ApplicationUser user, string roleName)
+        {
+            return new UserViewModel()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                RoleName = roleName
+            };
+        }
+
+        public static BookingManageModel ToViewModel(this Booking booking)
+        {
+            return new BookingManageModel()
+            {
+                Id = booking.Id,
+                Name = booking.Name,
+                Surname = booking.Surname,
+                Email = booking.Email,
+                BookStatus = booking.BookStatus,
+
+            };
+        }
     }
 }

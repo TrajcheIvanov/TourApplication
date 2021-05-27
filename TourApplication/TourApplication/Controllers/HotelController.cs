@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace TourApplication.Controllers
 
             return View(hotelsToView);
         }
+
+        [Authorize(Roles = "Admin,Content Creator")]
         public IActionResult ManageOverview(string errorMessage, string successMessage)
         {
             ViewBag.ErrorMessage = errorMessage;
@@ -39,12 +42,14 @@ namespace TourApplication.Controllers
             return View(hotelsToView);
         }
 
+        [Authorize(Roles = "Admin,Content Creator")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin,Content Creator")]
         [HttpPost]
         public IActionResult Create(HotelCreateModel hotel)
         {
@@ -82,6 +87,7 @@ namespace TourApplication.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Content Creator")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -98,6 +104,7 @@ namespace TourApplication.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Content Creator")]
         [HttpPost]
         public IActionResult Edit(HotelUpdateModel hotel)
         {
@@ -120,6 +127,7 @@ namespace TourApplication.Controllers
             return View(hotel);
         }
 
+        [Authorize(Roles = "Admin,Content Creator")]
         public IActionResult Delete(int id)
         {
             var response = _hotelServices.Delete(id);

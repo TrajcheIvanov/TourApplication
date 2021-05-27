@@ -17,12 +17,6 @@
             <img src="@Model.ImageUrl" alt="Alternate Text" />
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class="col-sm-10">
@@ -56,6 +50,23 @@
     </dl>
 </div>
 <div class="text-center">
-    <a href="/Hotel/Edit/@Model.Id" class="text-success">Edit</a>|
-    <a asp-action="ManageOverview">Back to List</a>
+    @if (User.IsInRole(TourApplication.Common.Helper.ContentCreator) || User.IsInRole(TourApplication.Common.Helper.Admin))
+    {
+        <div class="btn-group">
+            <button class="btn btn-warning"> <a href="/Hotel/Edit/@Model.Id" class="text-dark">Edit</a> </button>
+            <button class="btn btn-primary"> <a asp-action="ManageOverview" class="text-white">Back to List</a> </button>
+            <button class="btn btn-success"> <a href="/Booking/BookHotel/@Model.Id" class="text-white">Book</a> </button>
+            <button class="btn btn-info"> <a asp-action="Overview" class="text-white">To Overview</a> </button>
+        </div>
+
+    }
+    else
+    {
+        
+        <div class="btn-group">
+            <button class="btn btn-success"> <a href="/Booking/BookHotel/@Model.Id" class="text-white">Book</a> </button>
+            <button class="btn btn-primary"> <a asp-action="Overview" class="text-white">Back to Overview</a> </button>
+        </div>
+    }
+
 </div>
